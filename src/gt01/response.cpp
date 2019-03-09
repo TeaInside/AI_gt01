@@ -17,7 +17,7 @@
 	const char a[][SIZE] = \
 
 #define SET_PAT(PAT) \
-	if (Php::call("preg_match", PAT, this->text)) 
+	if (Php::call("preg_match", PAT, this->text))
 
 bool gt01::check() {
 
@@ -25,6 +25,7 @@ bool gt01::check() {
 	uint16_t i = 0;
 	uint32_t unixtime = (uint32_t)((int)Php::call("time"));	
 
+	// Good morning.
 	SET_PAT(
 		"/(^|(.{0,3}[\\s]+))" \
 		"(go?od)?[\\s]+mo?rni?ni?g?" \
@@ -55,6 +56,7 @@ bool gt01::check() {
 		}
 	}
 
+	// Good afternoon.
 	SET_PAT(
 		"/(^|(.{0,3}[\\s]+))" \
 		"(go?od)[\\s]+afte?rnoo?n" \
