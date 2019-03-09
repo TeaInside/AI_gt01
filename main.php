@@ -26,7 +26,7 @@ print tea_gt01(
 	// $argv[1],
 	// $argv[2] ?? "User",
 	// $argv[3] ?? "User"
-	"Good morning",
+	"hi, @MyIceTeaBot!",
 	"Ammar Faizi",
 	"Ammar"
 )."\n";

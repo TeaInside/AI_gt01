@@ -27,9 +27,9 @@ bool gt01::check() {
 
 	// Good morning.
 	SET_PAT(
-		"/(^|(.{0,3}[\\s]+))" \
+		"/^(.{0,5}[\\s]+)?" \
 		"(go?od)?[\\s]+mo?rni?ni?g?" \
-		"(([\\s]+.{0,10})|$)/Usi"
+		"[\\.\\!\\~\\^\\,]{0,5}[\\s]+.{0,20}$/"
 	) {
 
 		// 00 AM to 11 AM
@@ -58,9 +58,9 @@ bool gt01::check() {
 
 	// Good afternoon.
 	SET_PAT(
-		"/(^|(.{0,3}[\\s]+))" \
+		"/^(.{0,5}[\\s]+)?" \
 		"(go?od)[\\s]+afte?rnoo?n" \
-		"(([\\s]+.{0,10})|$)/"
+		"[\\.\\!\\~\\^\\,]{0,5}[\\s]+.{0,20}$/"
 	) {
 
 		// Saying good afternoon in morning (00 AM to 10 AM).
@@ -87,6 +87,34 @@ bool gt01::check() {
 
 		}
 
+	}
+
+	// Say hello.
+	SET_PAT(
+		"/^(.{0,5}[\\s]+)?" \
+		"(hello|ha?lo)" \
+		"[\\.\\!\\~\\^\\,]{0,5}[\\s]+.{0,20}$/"
+	) {
+
+		RS(28) {
+			"Hi {name}!",
+			"Hello {cname}, how are you?",
+			"Hello {name}!"
+		};
+		RET();
+	}
+
+	SET_PAT(
+		"/^(.{0,5}[\\s]+)?" \
+		"(hay|hi{1,3})" \
+		"[\\.\\!\\~\\^\\,]{0,5}[\\s]+.{0,20}$/"
+	) {
+		RS(28) {
+			"Hi {name}!",
+			"Hello {cname}, how are you?",
+			"Hello {name}!"
+		};
+		RET();
 	}
 
 	return false;
