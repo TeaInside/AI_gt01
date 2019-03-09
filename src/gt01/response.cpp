@@ -26,22 +26,25 @@ bool gt01::check() {
 	uint32_t unixtime = (int)Php::call("time");	
 
 	SET_PAT("/^.{0,5}(go?od)?mo?rni?ni?g?.{0,10}$/Usi") {
+
 		ST(0, 10) {
 			
-			RS(100){
+			RS(44){
 				"Good morning {cname}!",
-				"Hi, good morning {cname}!\nHave a nice day!"
+				"Hi, good morning {cname}!\nHave a nice day!",
+				"Ohayou ~^o^~"
 			};
-
 			RET();
 
 		} else 
 
 		ST(11, 14) {
 
-			std::string a[] = {
-
+			RS(44){
+				"Good afternoon {cname}!",
+				"It is now afternoon {cname}!"
 			};
+			RET();
 
 		}
 	}
