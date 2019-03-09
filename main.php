@@ -27,6 +27,6 @@ print tea_gt01(
 	// $argv[2] ?? "User",
 	// $argv[3] ?? "User"
 	"Good morning",
-	"Ammar",
-	"Ammar Faizi"
-);
+	"Ammar Faizi",
+	"Ammar"
+)."\n";

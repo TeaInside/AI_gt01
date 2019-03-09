@@ -34,7 +34,15 @@ bool gt01::exec() {
 }
 
 std::string gt01::get_response() {
-	return this->response;
+	std::vector<std::string> r1;
+	std::vector<std::string> r2;
+
+	r1.push_back(std::string("{name}"));
+	r2.push_back(std::string(this->name));
+	r1.push_back(std::string("{cname}"));
+	r2.push_back(std::string(this->nickname));
+
+	return Php::call("str_replace", r1, r2, this->response);
 }
 
 void gt01::set_response(std::string response) {

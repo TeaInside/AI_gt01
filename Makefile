@@ -1,6 +1,6 @@
 
 NAME = ai_gt01
-DEBUG_MODE = 1
+DEBUG_MODE = 0
 PHP_VERSION = 7.2
 INI_DIR = /etc/php/${PHP_VERSION}/mods-available
 ROOT_DIR = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))

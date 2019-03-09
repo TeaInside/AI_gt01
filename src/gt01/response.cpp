@@ -4,7 +4,7 @@
 #include <phpcpp.h>
 #include <gt01/gt01.hpp>
 
-#define ST(A,B) \
+#define time_range(A,B) \
 	if (h >= A && h <= B)
 
 #define RET() \
@@ -23,12 +23,17 @@ bool gt01::check() {
 
 	uint8_t h = atoi(Php::call("date", "H"));
 	uint16_t i = 0;
-	uint32_t unixtime = (int)Php::call("time");	
+	uint32_t unixtime = (uint32_t)((int)Php::call("time"));	
 
-	SET_PAT("/^.{0,5}(go?od)?mo?rni?ni?g?.{0,10}$/Usi") {
+	SET_PAT(
+		"/(^|(.{0,3}[\\s]+))" \
+		"(go?od)?mo?rni?ni?g?" \
+		"(([\\s]+.{0,10})|$)/Usi"
+	) {
 
-		ST(0, 23) {
-			
+		// 00 AM to 11 AM
+		time_range(0, 11) {
+
 			RS(44){
 				"Good morning {cname}!",
 				"Hi, good morning {cname}!\nHave a nice day!",
@@ -38,15 +43,48 @@ bool gt01::check() {
 
 		} else 
 
-		ST(11, 14) {
+		// Saying good morning in afternoon (12 AM to 11 PM).
+		time_range(12, 23) {
 
-			RS(44){
+			RS(28){
 				"Good afternoon {cname}!",
 				"It is now afternoon {cname}!"
 			};
 			RET();
 
 		}
+	}
+
+	SET_PAT(
+		"/(^|(.{0,3}[\\s]+))" \
+		"(go?od)afte?rnoo?n" \
+		"(([\\s]+.{0,10})|$)/"
+	) {
+
+		// Saying good afternoon in morning (00 AM to 10 AM).
+		// Some people assume that 11 AM is afternoon, so we don't catch it.
+		time_range(0, 10) {
+
+			RS(33){
+				"Good morning {cname}!",
+				"Hi {cname}, it's still morning :3"
+			};
+			RET();
+
+		} else 
+
+		// 12 AM to 11 PM
+		time_range(11, 23) {
+
+			RS(){
+				"Good afternoon {cname}!",
+				"Hi, good afternoon {cname}, how was your day?",
+				"Konnichiwa^^"
+			};
+			RET();
+
+		}
+
 	}
 
 	return false;
