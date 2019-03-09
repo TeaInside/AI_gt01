@@ -27,7 +27,7 @@ bool gt01::check() {
 
 	SET_PAT(
 		"/(^|(.{0,3}[\\s]+))" \
-		"(go?od)?mo?rni?ni?g?" \
+		"(go?od)?[\\s]+mo?rni?ni?g?" \
 		"(([\\s]+.{0,10})|$)/Usi"
 	) {
 
@@ -46,7 +46,7 @@ bool gt01::check() {
 		// Saying good morning in afternoon (12 AM to 11 PM).
 		time_range(12, 23) {
 
-			RS(28){
+			RS(29){
 				"Good afternoon {cname}!",
 				"It is now afternoon {cname}!"
 			};
@@ -57,7 +57,7 @@ bool gt01::check() {
 
 	SET_PAT(
 		"/(^|(.{0,3}[\\s]+))" \
-		"(go?od)afte?rnoo?n" \
+		"(go?od)[\\s]+afte?rnoo?n" \
 		"(([\\s]+.{0,10})|$)/"
 	) {
 
@@ -65,7 +65,7 @@ bool gt01::check() {
 		// Some people assume that 11 AM is afternoon, so we don't catch it.
 		time_range(0, 10) {
 
-			RS(33){
+			RS(34){
 				"Good morning {cname}!",
 				"Hi {cname}, it's still morning :3"
 			};
@@ -76,7 +76,7 @@ bool gt01::check() {
 		// 12 AM to 11 PM
 		time_range(11, 23) {
 
-			RS(){
+			RS(46){
 				"Good afternoon {cname}!",
 				"Hi, good afternoon {cname}, how was your day?",
 				"Konnichiwa^^"
