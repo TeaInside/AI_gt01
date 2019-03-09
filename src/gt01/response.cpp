@@ -27,7 +27,7 @@ bool gt01::check() {
 
 	SET_PAT("/^.{0,5}(go?od)?mo?rni?ni?g?.{0,10}$/Usi") {
 
-		ST(0, 10) {
+		ST(0, 23) {
 			
 			RS(44){
 				"Good morning {cname}!",

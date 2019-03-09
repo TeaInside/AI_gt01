@@ -30,7 +30,7 @@ void gt01::set_text(std::string text) {
 }
 
 bool gt01::exec() {
-	return false;
+	return this->check();
 }
 
 std::string gt01::get_response() {

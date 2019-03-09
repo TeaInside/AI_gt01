@@ -23,7 +23,10 @@ if (!function_exists("tea_gt01")) {
 }
 
 print tea_gt01(
-	$argv[1],
-	$argv[2] ?? "User",
-	$argv[3] ?? "User"
+	// $argv[1],
+	// $argv[2] ?? "User",
+	// $argv[3] ?? "User"
+	"Good morning",
+	"Ammar",
+	"Ammar Faizi"
 );
