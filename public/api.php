@@ -64,6 +64,7 @@ $input = escapeshellarg($input);
 $name = escapeshellarg($name);
 $nickname = escapeshellarg($nickname);
 $ext = escapeshellarg(__DIR__."/../teaai.so");
+$bin = escapeshellarg(__DIR__."/../bin/gt01.php");
 $output = trim(shell_exec("/usr/bin/php -d extension={$ext} {$bin} {$input} {$name} {$nickname}"));
 date_default_timezone_set("Asia/Jakarta");
 print json_encode(
