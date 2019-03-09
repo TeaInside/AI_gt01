@@ -23,7 +23,7 @@ bool gt01::check() {
 
 	uint8_t h = atoi(Php::call("date", "H"));
 	uint16_t i = 0;
-	uint32_t unixtime = (uint32_t)((int)Php::call("time"));	
+	uint32_t unixtime = (uint32_t)((int)Php::call("time"));
 
 	// Good morning.
 	SET_PAT(
